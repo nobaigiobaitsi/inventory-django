@@ -12,3 +12,12 @@ class ProductForm(forms.ModelForm):
             "quantity": forms.NumberInput(attrs={"class": "form-control"}),
             "price": forms.NumberInput(attrs={"class": "form-control"}),
         }
+
+
+class UpdateStockForm(forms.Form):
+    product = forms.ModelChoiceField(
+        queryset=Product.objects.all(), label="Select Product"
+    )
+    quantity_change = forms.IntegerField(
+        label="Change in Quantity (use negative for removal)"
+    )
