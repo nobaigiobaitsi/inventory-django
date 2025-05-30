@@ -1,6 +1,7 @@
 from .models import Product
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
 
+
 # Add a new product to the inventory
 def add_product(name: str, category: str, quantity: int, price: float) -> str:
     if not name.strip():
@@ -13,15 +14,11 @@ def add_product(name: str, category: str, quantity: int, price: float) -> str:
     if Product.objects.filter(name=name).exists():
         raise ValidationError(f"A product with the name '{name}' already exists.")
 
-    product = Product(
-        name=name,
-        category=category,
-        quantity=quantity,
-        price=price
-    )
+    product = Product(name=name, category=category, quantity=quantity, price=price)
     product.save()
 
     return f"Product '{name}' added successfully."
+
 
 # Update the stock of an existing product
 def update_product_stock(product_id: int, delta: int) -> str:
@@ -45,6 +42,7 @@ def update_product_stock(product_id: int, delta: int) -> str:
     product.save()
     return f"Stock updated. New quantity: {product.quantity}"
 
+
 # Remove a product from the inventory
 def remove_product(product_id: int) -> str:
     if product_id <= 0:
@@ -58,6 +56,12 @@ def remove_product(product_id: int) -> str:
     product.delete()
     return f"Product with ID {product_id} removed successfully."
 
+
 # Returns a list of all products in the inventory
+"""
 def get_inventory():
     return list(Product.objects.all())
+
+This is now obsolete as the product_list view in views.py handles this.
+I just keep it to remember my logic.
+"""
