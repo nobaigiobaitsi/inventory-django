@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Product
 from .forms import ProductForm, UpdateStockForm
 from django.contrib import messages
+from django.shortcuts import get_object_or_404
 
 
 def base_page(request):
@@ -50,3 +51,14 @@ def update_product_stock(request):
         form = UpdateStockForm()
 
     return render(request, "inventory/update_stock.html", {"form": form})
+
+
+def remove_product(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+
+    if request.method == "POST":
+        product.delete()
+        messages.success(request, f"Product '{product.name}' has been deleted.")
+        return redirect("product_list")
+
+    return render(request, "inventory/remove_product.html", {"product": product})

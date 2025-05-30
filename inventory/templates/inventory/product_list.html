@@ -18,6 +18,13 @@
 </head>
 <body>
     <h1>Inventory</h1>
+    <td>
+    {% if product.id %}
+        <a href="{% url 'remove_product' product.id %}" class="btn btn-danger btn-sm">Remove</a>
+    {% else %}
+        <span class="text-muted">Invalid Product</span>
+    {% endif %}
+    </td>
     {% if products %}
     <table>
         <thead>
@@ -26,7 +33,6 @@
                 <th>Category</th>
                 <th>Quantity</th>
                 <th>Price</th>
-                <th>Added</th>
                 <th>Updated</th>
             </tr>
         </thead>
@@ -37,8 +43,10 @@
                 <td>{{ product.category }}</td>
                 <td>{{ product.quantity }}</td>
                 <td>{{ product.price }}</td>
-                <td>{{ product.date_added }}</td>
                 <td>{{ product.last_updated }}</td>
+                <td>
+                    <a href="{% url 'remove_product' product.id %}" class="btn btn-danger btn-sm">Remove</a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
