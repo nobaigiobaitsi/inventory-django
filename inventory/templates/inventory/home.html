@@ -1,0 +1,13 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h1>Welcome to Inventory Management</h1>
+    <p>Choose an option from the navigation menu above:</p>
+    <ul>
+      <li><a href="{% url 'product_list' %}">View Products</a></li>
+      <li><a href="{% url 'add_product' %}">Add New Product</a></li>
+      <li><a href="{% url 'update_product_stock' %}">Update Product Stock</a></li>
+    </ul>
+  </div>
+{% endblock %}

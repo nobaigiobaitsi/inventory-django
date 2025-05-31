@@ -5,6 +5,10 @@ from django.contrib import messages
 from django.shortcuts import get_object_or_404
 
 
+def home(request):
+    return render(request, "inventory/home.html")
+
+
 def base_page(request):
     return render(request, "inventory/base.html")
 
