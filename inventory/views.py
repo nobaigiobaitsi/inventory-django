@@ -66,3 +66,10 @@ def remove_product(request, product_id):
         return redirect("product_list")
 
     return render(request, "inventory/remove_product.html", {"product": product})
+
+
+def remove_product_select(request):
+    products = Product.objects.all()
+    return render(
+        request, "inventory/remove_product_select.html", {"products": products}
+    )

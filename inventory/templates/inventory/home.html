@@ -1,13 +1,28 @@
 {% extends 'inventory/base.html' %}
 
 {% block content %}
-  <div class="container mt-4">
-    <h1>Welcome to Inventory Management</h1>
-    <p>Choose an option from the navigation menu above:</p>
-    <ul>
-      <li><a href="{% url 'product_list' %}">View Products</a></li>
-      <li><a href="{% url 'add_product' %}">Add New Product</a></li>
-      <li><a href="{% url 'update_product_stock' %}">Update Product Stock</a></li>
-    </ul>
-  </div>
+<div class="text-center">
+    <h1 class="mb-4">Welcome</h1>
+    <p class="lead">Easily manage your stock, products, and inventory data.</p>
+
+    <div class="row mt-5">
+        <div class="col-md-3">
+            <a href="{% url 'add_product' %}" class="btn btn-primary btn-lg w-100 mb-3"> Add Product</a>
+        </div>
+        <div class="col-md-3">
+            <a href="{% url 'product_list' %}" class="btn btn-success btn-lg w-100 mb-3"> Product List</a>
+        </div>
+        <div class="col-md-3">
+            <a href="{% url 'update_product_stock' %}" class="btn btn-warning btn-lg w-100 mb-3"> Update Stock</a>
+        </div>
+        <div class="col-md-3">
+            <a href="{% url 'remove_product_select' %}" class="btn btn-danger btn-lg w-100 mb-3"> Remove Product</a>
+        </div>
+    </div>
+</div>
+<footer class="text-center text-muted mt-5">
+    <hr>
+    <p>&copy; 2025 MyCompany Inventory. All rights reserved.</p>
+</footer>
+
 {% endblock %}

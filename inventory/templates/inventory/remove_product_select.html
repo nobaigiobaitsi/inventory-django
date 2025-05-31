@@ -1,0 +1,12 @@
+{% extends 'inventory/base.html' %}
+{% block content %}
+  <h2>Select a product to remove</h2>
+  <ul>
+    {% for product in products %}
+      <li>
+        {{ product.name }} -
+        <a href="{% url 'remove_product' product.id %}" class="btn btn-danger btn-sm">Remove</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
